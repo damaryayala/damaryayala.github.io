@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Damary Ayala | Portfolio</title>
+  <meta name="description" content="Portfolio website for Damary Ayala — Data Analyst and Software Developer focused professional." />
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --text: #101828;
+      --muted: #475467;
+      --line: #e4e7ec;
+      --accent: #111827;
+      --soft: #eef2f6;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    .nav {
+      position: sticky; top: 0; z-index: 40;
+      backdrop-filter: blur(14px);
+      background: rgba(246,247,251,.82);
+      border-bottom: 1px solid rgba(228,231,236,.9);
+    }
+    .nav-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      min-height: 72px; gap: 18px;
+    }
+    .brand { font-weight: 800; letter-spacing: -0.02em; font-size: 1.05rem; }
+    .nav-links { display: flex; gap: 18px; flex-wrap: wrap; color: var(--muted); font-size: .95rem; }
+    .hero { padding: 72px 0 38px; }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.25fr .75fr; gap: 28px; align-items: start;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px;
+      background: var(--card); color: var(--muted); font-size: .9rem;
+    }
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 4.6rem);
+      line-height: 1.02; letter-spacing: -0.045em; margin: 18px 0 14px;
+    }
+    .lead {
+      font-size: 1.1rem; color: var(--muted); max-width: 760px;
+    }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 13px 18px; border-radius: 18px; font-weight: 600; font-size: .95rem;
+      border: 1px solid var(--line); background: var(--card);
+      box-shadow: 0 2px 10px rgba(16,24,40,.04);
+    }
+    .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 28px; padding: 26px; box-shadow: 0 10px 30px rgba(16,24,40,.04);
+    }
+    .snapshot dt {
+      font-size: .78rem; text-transform: uppercase; letter-spacing: .12em; color: #667085; margin-bottom: 4px;
+    }
+    .snapshot dd { margin: 0 0 18px; color: var(--text); font-weight: 600; }
+    .section { padding: 18px 0 22px; }
+    .section-header { margin-bottom: 18px; }
+    .section-title {
+      font-size: clamp(1.55rem, 3vw, 2.1rem); margin: 0 0 6px; letter-spacing: -0.03em;
+    }
+    .section-subtitle { margin: 0; color: var(--muted); }
+    .grid-2 { display: grid; grid-template-columns: 1.1fr .9fr; gap: 22px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .pill-wrap { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .pill {
+      padding: 9px 12px; border-radius: 999px; background: var(--soft);
+      color: #344054; font-size: .92rem; border: 1px solid #e8edf3;
+    }
+    .timeline-item + .timeline-item { margin-top: 18px; }
+    .role-top {
+      display: flex; justify-content: space-between; gap: 12px; align-items: start; flex-wrap: wrap;
+    }
+    .role-title { font-size: 1.2rem; font-weight: 700; }
+    .role-company { color: var(--muted); }
+    .muted { color: var(--muted); }
+    ul.clean { padding-left: 18px; margin: 14px 0 0; }
+    ul.clean li + li { margin-top: 10px; }
+    .project-card h3 { margin: 8px 0 6px; font-size: 1.22rem; }
+    .project-meta { color: #667085; font-size: .92rem; }
+    .resume {
+      display: grid; grid-template-columns: .95fr 1.05fr; gap: 22px;
+    }
+    .dark {
+      background: linear-gradient(135deg, #0f172a, #111827 52%, #1f2937);
+      color: white; border: none;
+    }
+    .dark .muted, .dark p { color: #d0d5dd; }
+    footer { padding: 36px 0 64px; color: var(--muted); font-size: .95rem; }
+    .small { font-size: .92rem; }
+    @media (max-width: 920px) {
+      .hero-grid, .grid-2, .grid-3, .resume { grid-template-columns: 1fr; }
+      .nav-inner { padding: 10px 0; }
+      .nav-links { gap: 12px; font-size: .9rem; }
+      .hero { padding-top: 48px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Damary Ayala</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero container">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Data Analyst + Software Developer Focus</div>
+        <h1>Building a career at the intersection of data, systems, and problem-solving.</h1>
+        <p class="lead">
+          I’m Damary Ayala, an analytical professional with hands-on experience in reseller onboarding,
+          structured product data, ACES and PIES standards, and data quality support within the automotive
+          aftermarket space. I’m growing into Data Analyst and Software Developer-focused roles through SQL,
+          Excel, Python, and portfolio projects that reflect real process thinking.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="mailto:damary.ayala24@gmail.com">damary.ayala24@gmail.com</a>
+          <a class="btn" href="https://www.linkedin.com/in/damary-ayala" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="btn" href="https://github.com/damaryayala" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+
+      <aside class="card">
+        <dl class="snapshot">
+          <dt>Location</dt>
+          <dd>Pomona, CA</dd>
+          <dt>Current Role</dt>
+          <dd>Reseller Coordinator at SEMA Data</dd>
+          <dt>Core Focus</dt>
+          <dd>SQL, product data workflows, reseller onboarding, ACES / PIES, data quality</dd>
+          <dt>Education</dt>
+          <dd>B.S. in Mathematics — Cal Poly Pomona</dd>
+        </dl>
+      </aside>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section" id="about">
+      <div class="grid-2">
+        <div class="card">
+          <div class="section-header">
+            <h2 class="section-title">About Me</h2>
+          </div>
+          <p>
+            I’m an analytical and detail-oriented professional transitioning into Data Analyst and Software Developer-focused roles.
+            My experience at SEMA Data has given me hands-on exposure to reseller onboarding, structured product data, ACES and PIES
+            standards, and data quality work involving overlap and conflict analysis. What I enjoy most is understanding how systems connect,
+            identifying inconsistencies in data, and helping turn complex workflows into clearer, more useful processes.
+          </p>
+          <p>
+            I’m continuing to build my technical foundation through SQL, Excel, Python, and portfolio projects, with the goal of growing
+            into a role where I can combine analytics, problem-solving, and technical development.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="section-header">
+            <h2 class="section-title">Certifications</h2>
+            <p class="section-subtitle">Technical foundations that support my transition into analytics and development.</p>
+          </div>
+          <ul class="clean">
+            <li>Databases and SQL for Data Science with Python — IBM</li>
+            <li>SQL for Data Science — UC Davis</li>
+            <li>Excel for Data Analytics — IBM</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="card">
+        <div class="section-header">
+          <h2 class="section-title">Experience</h2>
+          <p class="section-subtitle">Work that translates directly into data operations, analysis, and structured systems thinking.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="role-top">
+            <div>
+              <div class="role-title">Reseller Coordinator</div>
+              <div class="role-company">SEMA Data</div>
+            </div>
+            <div class="muted small">June 2024 – Current</div>
+          </div>
+          <ul class="clean">
+            <li>Support reseller onboarding through PIMS and help users navigate product data access and setup workflows.</li>
+            <li>Work with ACES and PIES automotive data standards and help investigate data quality questions tied to fitment and catalog structure.</li>
+            <li>Assist with overlap and conflict-related work to identify inconsistent or duplicated product data scenarios.</li>
+            <li>Coordinate with internal teams and customers to troubleshoot reseller data needs and platform-related questions.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="grid-3">
+        <div class="card">
+          <h2 class="section-title">Analytics Skills</h2>
+          <div class="pill-wrap">
+            <span class="pill">SQL</span>
+            <span class="pill">Excel for Data Analytics</span>
+            <span class="pill">Data Cleaning</span>
+            <span class="pill">Data Quality Analysis</span>
+            <span class="pill">Dashboard Reporting</span>
+            <span class="pill">Overlap & Conflict Analysis</span>
+            <span class="pill">ACES / PIES Standards</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="section-title">Tools</h2>
+          <div class="pill-wrap">
+            <span class="pill">PIMS</span>
+            <span class="pill">Jira</span>
+            <span class="pill">Slack</span>
+            <span class="pill">Microsoft Excel</span>
+            <span class="pill">Microsoft Office</span>
+            <span class="pill">CRM Systems</span>
+            <span class="pill">GitHub</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="section-title">Growth Areas</h2>
+          <div class="pill-wrap">
+            <span class="pill">Python</span>
+            <span class="pill">JavaScript</span>
+            <span class="pill">Data Visualization</span>
+            <span class="pill">Software Development Fundamentals</span>
+            <span class="pill">Power BI / Tableau</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="card">
+        <div class="section-header">
+          <h2 class="section-title">Projects</h2>
+          <p class="section-subtitle">Public-facing work designed to showcase technical growth while respecting confidentiality around internal data.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="project-card card">
+            <div class="project-meta">SQL project · IBM course</div>
+            <h3>SQL Analysis Project</h3>
+            <p>
+              Course-based SQL work demonstrating querying, filtering, joins, aggregation, and structured business-question analysis.
+              This project can be expanded into a recruiter-facing case study once you add your final notebook, screenshots, or query write-up.
+            </p>
+            <ul class="clean">
+              <li>Highlights beginner-to-intermediate SQL skills.</li>
+              <li>Shows analytical reasoning through structured queries.</li>
+              <li>Add your final project link here later.</li>
+            </ul>
+          </article>
+
+          <article class="project-card card">
+            <div class="project-meta">Python project · coming soon</div>
+            <h3>Python Course Project</h3>
+            <p>
+              A future technical sample that can showcase data transformation, reporting logic, or analysis in Python.
+              Once you complete it, this will strengthen the software-development side of your portfolio.
+            </p>
+            <ul class="clean">
+              <li>Good space for notebooks, scripts, or analysis output.</li>
+              <li>Can tie together coding, problem-solving, and presentation.</li>
+              <li>Add repo link when ready.</li>
+            </ul>
+          </article>
+
+          <article class="project-card card">
+            <div class="project-meta">Portfolio concept · planned build</div>
+            <h3>Data Quality Dashboard</h3>
+            <p>
+              A public-facing dashboard inspired by real-world product data workflows. It can track duplicate records,
+              missing attributes, standardization issues, and resolution status using sample or anonymized data.
+            </p>
+            <ul class="clean">
+              <li>Designed to mirror real issue categories without exposing confidential information.</li>
+              <li>Strong fit for Data Analyst and Data Operations roles.</li>
+              <li>We can build this next.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="resume">
+      <div class="resume">
+        <div class="card dark">
+          <h2 class="section-title">Resume Snapshot</h2>
+          <p>
+            Analytical and detail-oriented professional with experience in customer support, reseller operations,
+            product data workflows, and structured data standards in the automotive aftermarket industry.
+          </p>
+          <p>
+            Strong foundation in SQL, Excel, data investigation, and process-oriented problem-solving,
+            with a growing focus on software development and technical portfolio building.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2 class="section-title">Next Steps</h2>
+          <ul class="clean">
+            <li>Upload your IBM SQL project to GitHub and add screenshots or a short project summary.</li>
+            <li>Add your Python course project once complete.</li>
+            <li>Build the mock Data Quality Dashboard using public or fake sample data.</li>
+            <li>Match this site wording to your recruiter-facing resume.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="card">
+        <div class="section-header">
+          <h2 class="section-title">Contact</h2>
+          <p class="section-subtitle">Open to opportunities aligned with data analytics, data operations, and software development growth.</p>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="mailto:damary.ayala24@gmail.com">Email Me</a>
+          <a class="btn" href="https://www.linkedin.com/in/damary-ayala" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="btn" href="https://github.com/damaryayala" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div>Built for Damary Ayala • Ready for GitHub Pages deployment</div>
+  </footer>
+</body>
+</html>
